@@ -18,27 +18,33 @@
 </head>
 <body>
 <h1>Delete My Account &amp; Data — Driver's Log</h1>
-<p class="updated">Last updated: July 4, 2026</p>
-<p>Driver's Log stores all your trip, financial, and profile data locally on your device. This page explains how to delete your data from within the app or by contacting us.</p>
-<h2>Option 1 — Delete data directly in the app (fastest)</h2>
+<p class="updated">Last updated: November 5, 2026</p>
+<p>Driver's Log keeps your trip, financial, vehicle, and profile records on your device. That is not the only copy that can exist. If you turn on backup, a copy is stored in your own Google Drive app data. If you turn on Nearby Drivers, the app creates an anonymous Firebase user and writes coarse presence to Cloud Firestore. This page explains how to delete each of those.</p>
+
+<h2>Option 1 — Delete data on the device</h2>
 <div class="step"><b>Step 1.</b> Open <b>Driver's Log</b> on your device.</div>
-<div class="step"><b>Step 2.</b> Tap the <b>menu (⋮)</b> on the Home screen → <b>Settings</b>.</div>
-<div class="step"><b>Step 3.</b> Scroll to <b>Account &amp; Data</b> → tap <b>Delete all data</b>.</div>
-<div class="step"><b>Step 4.</b> Confirm. All trips, expenses, revenue entries, vehicles, and profile data stored on your device will be permanently removed.</div>
-<div class="step"><b>Step 5.</b> Uninstall the app to ensure no residual data remains.</div>
+<div class="step"><b>Step 2.</b> Open <b>Settings</b> and turn <b>Nearby Drivers</b> off. That stops new presence updates to Firestore.</div>
+<div class="step"><b>Step 3.</b> If you use Drive backup, sign out of it in Settings. Signing out stops new backups. It does not delete a backup already stored in your Google account.</div>
+<div class="step"><b>Step 4.</b> If Settings includes <b>Account &amp; Data → Delete all data</b>, use it and confirm. That removes trips, expenses, revenue entries, vehicles, and profile data stored on the device.</div>
+<div class="step"><b>Step 5.</b> Uninstall the app to remove the remaining on-device database. Uninstalling does not delete Firestore presence, the anonymous Firebase user, or a Drive app-data backup.</div>
+
 <h2>Option 2 — Request deletion by email</h2>
 <p>Send a deletion request to: <a href="mailto:arthoriusnetwork@gmail.com">arthoriusnetwork@gmail.com</a></p>
-<p>Include <b>"Data Deletion Request — Driver's Log"</b> in the subject line and the email address associated with your Google account (if you used sign-in). We will process your request within <b>30 days</b>.</p>
+<p>Put <b>Data Deletion Request — Driver's Log</b> in the subject. If you signed in for Drive backup, include that Google account email. If you used Nearby Drivers, include about when you used it. We will respond within <b>30 days</b> and delete Firestore presence and the anonymous Firebase user when we can match them to your request.</p>
+<p>The anonymous id is not your email address. If we cannot match the request to a record, we will tell you. Turning Nearby Drivers off and uninstalling the app stops further collection from that install.</p>
+
 <h2>What gets deleted</h2>
 <table>
-<tr><th>Data type</th><th>Deleted on device</th><th>Retention after request</th></tr>
-<tr><td>Trip records</td><td>Yes — immediately</td><td>None</td></tr>
-<tr><td>Revenue &amp; expense entries</td><td>Yes — immediately</td><td>None</td></tr>
-<tr><td>Vehicle profiles</td><td>Yes — immediately</td><td>None</td></tr>
-<tr><td>Driver profile &amp; settings</td><td>Yes — immediately</td><td>None</td></tr>
-<tr><td>Google Drive backup (if enabled)</td><td>Delete via your Google account at myaccount.google.com</td><td>Managed by Google</td></tr>
-<tr><td>Firebase Analytics &amp; Crashlytics</td><td>Anonymized usage data retained per Google's standard policy</td><td>Up to 14 months (Google policy)</td></tr>
+<tr><th>Data type</th><th>What you can do</th><th>After a matched request</th></tr>
+<tr><td>Trip, revenue, expense, vehicle, and profile records on the device</td><td>Delete in the app if that control is present, then uninstall</td><td>Gone from the device once you delete them or uninstall</td></tr>
+<tr><td>Nearby presence in Cloud Firestore</td><td>Turn Nearby Drivers off to stop new writes</td><td>Deleted when we can match the anonymous user</td></tr>
+<tr><td>Anonymous Firebase user</td><td>Not deleted by uninstall alone</td><td>Deleted when we can match it</td></tr>
+<tr><td>Google Drive app-data backup</td><td>Sign out in the app. The file remains in your Google account until it is removed.</td><td>We do not keep a separate copy. Ask us if you need help removing the backup from your account.</td></tr>
+<tr><td>Phone operating-system backup</td><td>Manage it in your Google or Apple account backup settings</td><td>Controlled by that account, not by a Driver's Log database</td></tr>
+<tr><td>Firebase Analytics and Crashlytics</td><td>Turn analytics off in Settings for future use</td><td>Google keeps existing diagnostics under its own retention (analytics is often up to 14 months)</td></tr>
+<tr><td>AdMob and store purchases</td><td>Limit ads in device settings. Cancel a subscription in Google Play or the App Store.</td><td>Handled by Google or Apple. We do not hold your card number.</td></tr>
 </table>
+
 <h2>Contact</h2>
 <p><a href="mailto:arthoriusnetwork@gmail.com">arthoriusnetwork@gmail.com</a></p>
 <p><a href="index.html">← Back to Privacy Policy</a></p>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Privacy Policy - Driver's Log</title>
+<title>Privacy Policy for Driver's Log</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body {
@@ -26,135 +26,175 @@
 <body>
 
 <h1>Privacy Policy for Driver's Log</h1>
-<p class="updated">Last updated: July 2, 2026</p>
+<p class="updated">Last updated: November 5, 2026. Describes the app as of version 1.0.0+23.</p>
 
-<p>This policy explains what data Driver's Log ("the App") collects, how it's
-used, and where it's stored. Your trip, financial, and profile records stay
-on your device — there is no account system and we never sell your data. The
-App uses Firebase (Google) for crash reporting and basic usage analytics,
-Google AdMob to show ads, and an optional AI feature that sends an aggregated
-summary of your activity to a cloud service, all described below.</p>
+<p>This policy explains what data Driver's Log ("the App") collects, how it is
+used, and where it is stored. Your trip, financial, vehicle, and profile
+records are kept on your device. There is no Driver's Log password account.
+We do not sell your data.</p>
 
-<h2>Data the App Collects</h2>
+<p>Some features send limited data off the device. The App can sign you in
+with Firebase Anonymous Authentication, write coarse presence to Cloud
+Firestore if you turn on Nearby Drivers, send short prompts to Cloud Functions
+and Google's Gemini when you ask for an AI feature, and, if you choose it,
+back up your records to the hidden app-data folder in your own Google Drive.
+Crash reports, optional usage analytics, ads, and store purchases are described
+below.</p>
+
+<h2>Data the App Handles</h2>
 <table>
 <tr><th>Data</th><th>Why it's collected</th><th>Where it's stored</th></tr>
-<tr><td>GPS location</td><td>To track mileage during a shift and to detect individual trips automatically</td><td>On your device only</td></tr>
-<tr><td>Receipt photos</td><td>To read amounts off a receipt via on-device text recognition</td><td>Processed on your device; the photo itself is not retained after scanning</td></tr>
-<tr><td>Voice audio</td><td>To let you log an entry by speaking instead of typing</td><td>Processed on your device via on-device speech recognition; audio is not retained or transmitted</td></tr>
-<tr><td>Trip, revenue, expense, and shift records you enter</td><td>To power mileage history, financial tracking, and tax estimates</td><td>On your device only</td></tr>
-<tr><td>Aggregated activity summary (AI Insights feature)</td><td>To generate personalized financial tips via the AI Insights feature</td><td>Sent to a Firebase Cloud Function and Google's Gemini AI when you request insights; raw records are never sent — only totals and category breakdowns</td></tr>
-<tr><td>Advertising ID</td><td>To serve ads via Google AdMob</td><td>Managed by Google AdMob; see below</td></tr>
-<tr><td>Crash and error reports</td><td>To diagnose and fix bugs</td><td>Sent to Firebase Crashlytics (Google); see below</td></tr>
-<tr><td>App usage data (screens viewed, feature usage, app opens)</td><td>To understand which features are used so we can improve the App</td><td>Sent to Firebase Analytics (Google); see below</td></tr>
+<tr><td>GPS location during a shift</td><td>To measure mileage and detect trip start and end</td><td>On your device, and in a Google Drive backup only if you turn backup on</td></tr>
+<tr><td>Coarse presence (a geohash area, not a street address)</td><td>To show an approximate nearby-driver count when you opt in</td><td>Cloud Firestore, tied to an anonymous Firebase user id</td></tr>
+<tr><td>Anonymous Firebase user id</td><td>To separate presence records and remember this install for optional Pro status</td><td>Firebase Authentication and related Firebase data</td></tr>
+<tr><td>Receipt photos</td><td>To read an amount with on-device text recognition</td><td>Processed on your device; the photo is not uploaded by the App and is not kept after scanning</td></tr>
+<tr><td>Voice audio</td><td>To fill in an entry from speech</td><td>Handled by your device's speech-recognition service, which may process it on the device or send it to Apple or Google to make a transcript. The App does not store the recording.</td></tr>
+<tr><td>Trip, revenue, expense, vehicle, and profile records you enter</td><td>Mileage history, money tracking, tax estimates, and exports you start</td><td>On your device, and in your Google Drive app data if you back up</td></tr>
+<tr><td>Aggregated activity summary, an OBD code you ask about, or an area for a fuel-price lookup</td><td>Optional AI Insights, diagnostic-code explanations, and fuel prices</td><td>Sent to a Firebase Cloud Function and, for the AI features, Google's Gemini when you request them</td></tr>
+<tr><td>Google account email</td><td>Only if you sign in to turn on Drive backup</td><td>Used to reach your Drive app-data folder. It is not a Driver's Log profile for your trips.</td></tr>
+<tr><td>Advertising ID and similar ad signals</td><td>To show ads, including rewarded ads</td><td>Google AdMob. On iOS the App asks with App Tracking Transparency before tracking.</td></tr>
+<tr><td>Purchase status</td><td>To unlock an optional in-app purchase or subscription</td><td>Apple or Google processes payment. The App may store a Pro flag on the device and associate it with the anonymous Firebase user. We do not receive your card number.</td></tr>
+<tr><td>Crash and error reports</td><td>To find and fix bugs</td><td>Firebase Crashlytics (Google)</td></tr>
+<tr><td>App usage (screens, feature use, opens), if analytics is on</td><td>To see which features are used</td><td>Firebase Analytics (Google). You can turn this off in Settings.</td></tr>
 </table>
 
-<p>The App does not require an account and does not collect your name, email, or
-any other personal identifier as part of analytics or crash reporting. Your
-location, receipts, voice audio, and full financial records are never included
-in analytics events, crash reports, or AI requests.</p>
+<p>Analytics events, crash reports, and AI requests are not a copy of your
+full trip log. They do not include your receipt photos or saved voice
+recordings. Location does leave the device in the limited cases below:
+Nearby Drivers presence, a fuel-price area you request, and any backup you
+turn on.</p>
 
-<h2>How Data Is Used</h2>
+<h2>Location</h2>
+<p>While a shift is active, the App reads GPS on your device to calculate
+mileage and detect trip start and end points. Those tracks stay in the App's
+private storage on the device unless you back them up yourself.</p>
+<p>Location is not limited to the device in every case. If you turn on Nearby
+Drivers, the App writes a coarse area code (a geohash) so it can show an
+approximate count of other drivers. A fuel-price lookup you start may send
+the area you are asking about. The App does not upload your full route to us
+as a trip log for those features.</p>
+
+<h2>Nearby Drivers and Anonymous Sign-In</h2>
+<p>Nearby Drivers is off until you turn it on and confirm. When it is on, the
+App signs in with Firebase Anonymous Authentication. That creates an
+anonymous user id. It is not your name or email.</p>
+<p>The App then sends coarse presence to Cloud Firestore: a geohash area rather
+than a precise point or street address. Presence is aggregated so the feature
+can show a nearby count. It is not a public map of identifiable people. You
+can turn Nearby Drivers off in Settings. Turning it off stops new presence
+updates.</p>
+<p>The same anonymous id may be used so this install can remember optional Pro
+status. It is not a password account for your logbook.</p>
+
+<h2>Records on Your Device and Google Drive Backup</h2>
+<p>Trip, revenue, expense, shift, vehicle, and profile records are stored in
+the App's private storage on your device. They power totals, the tax
+estimates shown in the App, and exports you start (including CSV).</p>
+<p>Drive backup is optional. If you sign in with Google, the App requests the
+<code>drive.appdata</code> scope and stores a backup in the hidden app-data
+folder of <em>your</em> Google Drive. We do not keep a separate copy of that
+backup on our own servers. The App can read and write that backup only while
+you are signed in with that Google account. Signing out stops new backups. It
+does not by itself delete a backup already in your Drive.</p>
+<p>Your phone's own automatic backup (Android backup or an iCloud device
+backup) is controlled by the operating system and your store account. We do
+not operate that backup.</p>
+
+<h2>Receipts and Voice Entry</h2>
+<p>Receipt photos are read with on-device text recognition (Google ML Kit).
+The App does not upload the photo. The photo is not kept after the scan.</p>
+<p>Voice entry uses your device's speech-recognition service to turn speech
+into text you can correct before saving. Depending on the device and its
+settings, that service may process audio on the device or send it to Apple
+or Google to produce the transcript. The App does not keep the audio. Saved
+entries are the text you confirm, stored with your other records.</p>
+
+<h2>AI Features, Cloud Functions, and Gemini</h2>
+<p>These features run only when you ask for them. A Firebase Cloud Function
+receives a short prompt and, for the AI features, passes it to Google's
+Gemini:</p>
 <ul>
-<li><b>Location</b> is used exclusively to calculate mileage and detect trip
-start/end points while a shift is active. It is never transmitted to any
-server operated by us or any third party.</li>
-<li><b>Receipt photos and voice audio</b> are processed entirely on your device
-using Google's on-device ML Kit and speech recognition. Nothing is uploaded.</li>
-<li><b>Trip, revenue, and expense records</b> you enter are used to calculate
-totals, generate the tax estimates shown in the app, and produce exports
-you initiate yourself.</li>
-<li><b>AI Insights</b> — when you tap "Get Insights", the app computes an
-aggregated summary (total revenue, expense category totals, total miles, and
-mileage statistics for the past 30 days) and sends only that summary to a
-Firebase Cloud Function, which forwards it to Google's Gemini AI to generate
-tips. Your individual trip or transaction records are never sent.</li>
+<li><b>AI Insights</b> sends an aggregated summary (such as total revenue,
+expense category totals, total miles, and mileage statistics for a recent
+period). Individual trip or transaction rows are not sent.</li>
+<li><b>OBD explain</b> sends the diagnostic code you ask about, not your
+trip history. The Bluetooth link to an OBD-II adapter stays between your
+phone and the adapter.</li>
+<li><b>Fuel prices</b> may send the area you are looking up so a price
+result can be returned.</li>
 </ul>
+<p>These calls are governed by
+<a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 
-<h2>Data Storage and Backup</h2>
-<p>All personal data is stored locally in the app's private storage on your
-device. If you have Android's automatic backup enabled (the default on most
-devices), this data is backed up to your own Google Drive account by Android
-itself — we do not operate or have access to that backup. Uninstalling the app
-or disabling backups will remove this data permanently unless you've exported
-it yourself (the app includes a CSV export feature for this purpose).</p>
+<h2>Advertising and App Tracking</h2>
+<p>The App uses Google AdMob to show ads, including rewarded ads that can
+unlock features. AdMob may collect your Advertising ID, device identifiers,
+and ad-related usage data. On iOS, the App uses App Tracking Transparency
+and asks before tracking across apps and websites.</p>
+<p>You can limit ad personalization in your device settings
+(<em>Privacy &gt; Ads</em> or the iOS tracking prompt). AdMob is governed by
+<a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 
-<h2>Permissions Requested</h2>
+<h2>In-App Purchases</h2>
+<p>Optional purchases and subscriptions are processed by Google Play or the
+Apple App Store. Payment details stay with the store. We cannot see your
+card or bank number. Store billing is governed by the
+<a href="https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldo=0&amp;ldt=privacynotice">Google Payments Privacy Notice</a>
+or Apple's privacy policy, depending on where you bought the App. The App
+may keep a local Pro flag and associate it with the anonymous Firebase user
+on that install.</p>
+
+<h2>Crash Reports and Analytics</h2>
+<p><b>Firebase Crashlytics</b> collects crash reports (device model, OS
+version, app version, and a stack trace) so bugs can be fixed. It is not a
+copy of your trips, receipts, or voice recordings.</p>
+<p><b>Firebase Analytics</b> can collect basic usage (screens opened, feature
+use, app opens). You can turn analytics off in the App's Settings. It is not
+your financial ledger.</p>
+<p>Firebase and Google services are governed by
+<a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.
+Google keeps that data under each product's retention settings. Analytics
+retention is often up to 14 months, depending on the property settings.</p>
+
+<h2>Permissions</h2>
 <ul>
-<li><b>Location (including background)</b> — for shift/mileage tracking.</li>
-<li><b>Camera and Photos</b> — for receipt scanning and vehicle photo.</li>
-<li><b>Microphone</b> — for voice-entry logging.</li>
-<li><b>Notifications</b> — to show a persistent reminder while a shift is active and for maintenance reminders.</li>
-<li><b>Bluetooth</b> — to connect to OBD-II diagnostic adapters (optional feature).</li>
-<li><b>Advertising ID</b> — used by Google AdMob to serve ads. You can opt out via your device's advertising settings.</li>
+<li><b>Location (including background)</b> — shift and mileage tracking, and coarse presence only if Nearby Drivers is on.</li>
+<li><b>Camera and Photos</b> — receipt scanning and a vehicle photo.</li>
+<li><b>Microphone and speech recognition</b> — voice entry.</li>
+<li><b>Notifications</b> — a reminder while a shift is active, and maintenance reminders.</li>
+<li><b>Bluetooth</b> — optional OBD-II adapters.</li>
+<li><b>Advertising and tracking</b> — AdMob, and the iOS tracking prompt.</li>
 </ul>
-<p>Each permission is requested only when the corresponding feature is first
-used, and the app remains usable (with that feature disabled) if a
-permission is declined.</p>
-
-<h2>Third-Party Services</h2>
-
-<p>The App uses Google's on-device ML Kit (text recognition) and Android's
-Speech-to-Text APIs, both of which run locally on your device. No data
-processed by these APIs is sent to Google or any other party by this app.</p>
-
-<p>The App also uses the following third-party services:</p>
-
-<ul>
-<li><b>Google AdMob</b> — displays ads within the App, including rewarded ads
-that unlock features. AdMob may collect your Advertising ID, device
-identifiers, and usage data to serve relevant ads. You can opt out of
-interest-based ads in your device settings under <em>Privacy &gt; Ads</em>.
-AdMob is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
-
-<li><b>Google Play Billing</b> — processes any in-app purchases or
-subscriptions. Payment information is handled entirely by Google Play and
-is not accessible to us. Governed by
-<a href="https://payments.google.com/payments/apis-secure/u/0/get_legal_document?ldo=0&ldt=privacynotice">Google Payments Privacy Policy</a>.</li>
-
-<li><b>Firebase Cloud Functions &amp; Google Gemini AI</b> — when you use the
-AI Insights feature, an aggregated summary of your activity is sent to a
-Firebase Cloud Function operated by us, which passes it to Google's Gemini
-AI to generate tips. No raw trip records, exact amounts, or personal
-identifiers are included. Governed by
-<a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
-
-<li><b>Firebase Crashlytics</b> — automatically collects crash reports and error
-diagnostics (e.g. device model, OS version, app version, and the stack
-trace of what failed) so we can identify and fix bugs. It does not receive
-your trips, financial records, location, receipts, or voice audio.</li>
-
-<li><b>Firebase Analytics</b> — automatically collects basic usage data (e.g.
-which screens you open, how often the app is opened) to help us understand
-which features are actually used. It does not receive your trips,
-financial records, location, receipts, or voice audio.</li>
-</ul>
-
-<p>All Firebase and Google services are governed by
-<a href="https://policies.google.com/privacy">Google's Privacy Policy</a>. Data sent to
-these services may be used by Google in accordance with that policy and is
-retained according to each service's standard data-retention settings.</p>
+<p>A permission is requested when the feature is first used. If you decline
+it, the rest of the App still opens and that feature stays off.</p>
 
 <h2>Children's Privacy</h2>
-<p>This App is not directed at children under the age of 13. We do not
-knowingly collect personal information from children.</p>
+<p>This App is not directed at children under 13. We do not knowingly collect
+personal information from children.</p>
+
+<h2 id="delete">Account and Data Deletion</h2>
+<p>You can remove on-device records yourself, turn off Nearby Drivers, sign
+out of Drive backup, and uninstall the App. Firestore presence and the
+anonymous Firebase user are not removed by uninstalling alone. The steps,
+and how to ask us to delete server-side records we can match, are on the
+<a href="delete.html">data deletion page</a>.</p>
+<p>Email
+<a href="mailto:arthoriusnetwork@gmail.com">arthoriusnetwork@gmail.com</a>
+with the subject <b>Data Deletion Request — Driver's Log</b>. We will
+respond within 30 days. Include the Google account email if you used Drive
+backup, and about when you used Nearby Drivers, so we can look for a
+matching anonymous id. If an email does not match an anonymous id, we will
+say so and delete the records we can identify.</p>
 
 <h2>Changes to This Policy</h2>
-<p>If this policy changes, the "Last updated" date above will be revised
-accordingly. Continued use of the App after a change constitutes acceptance
-of the updated policy.</p>
+<p>If this policy changes, the "Last updated" date above will be revised.
+This hosted page and the Google Play and App Store listings should stay in
+sync with it. Continued use of the App after a change means you accept the
+updated policy.</p>
 
 <h2>Contact</h2>
-<p>Questions about this policy can be sent to: <a href="mailto:arthoriusnetwork@gmail.com">arthoriusnetwork@gmail.com</a></p>
+<p>Questions about this policy:
+<a href="mailto:arthoriusnetwork@gmail.com">arthoriusnetwork@gmail.com</a></p>
 
 </body>
 </html>
-
-<h2 id="delete">Account &amp; Data Deletion</h2>
-<p>Driver's Log stores all your data locally on your device. You are in full control. To delete your data:</p>
-<ol>
-<li>Open <b>Driver's Log</b> → tap the <b>menu (⋮)</b> → <b>Settings</b>.</li>
-<li>Scroll to <b>Account &amp; Data</b> → tap <b>Delete all data</b> and confirm.</li>
-<li>Uninstall the app to ensure no residual data remains.</li>
-<li>If you used Google Sign-In for backup, delete your backup at <a href="https://myaccount.google.com">myaccount.google.com</a> → Data &amp; privacy → Back up your data.</li>
-</ol>
-<p>To request deletion by email, contact us at <a href="mailto:arthoriusnetwork@gmail.com">arthoriusnetwork@gmail.com</a> with subject <b>"Data Deletion Request — Driver's Log"</b>. We will respond within 30 days. Note: Driver's Log does not operate a central user database — your data lives on your device and in your own Google Drive backup. We cannot access it remotely, but we will guide you through deleting it yourself.</p>
